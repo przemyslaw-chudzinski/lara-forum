@@ -6,14 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $fillable = [
-        'title',
-        'slug',
-        'body',
-        'category_id',
-        'user_id'
-    ];
-
     function user()
     {
         return $this->belongsTo(User::class);
@@ -27,5 +19,15 @@ class Question extends Model
     function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function getPathAttribute()
+    {
+        return url('api/questions/' . $this->slug);
     }
 }
