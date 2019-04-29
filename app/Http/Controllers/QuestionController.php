@@ -61,6 +61,8 @@ class QuestionController extends Controller
     public function update(Request $request, Question $question)
     {
         $question->title = $request->input('title');
+        $question->body = $request->input('body');
+
         $question->isDirty() && $question->save();
 
         return response()->json([

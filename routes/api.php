@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReplyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResource('/questions', 'QuestionController');
+Route::apiResource('questions', 'QuestionController');
+Route::apiResource('categories', 'CategoryController');
+Route::apiResource('replies', 'ReplyController');
+Route::post('replies/{reply}/like', [ReplyController::class, 'like'])->name('replies.like');
+Route::post('replies/{reply}/dislike', [ReplyController::class, 'dislike'])->name('replies.dislike');
