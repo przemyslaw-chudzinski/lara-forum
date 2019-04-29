@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
@@ -14,7 +14,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'signUp']]);
     }
 
     /**
@@ -79,4 +79,17 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
-    }}
+    }
+
+    public function signUp(Request $request)
+    {
+        $user = User::create($request->all());
+
+        return \response()->json([
+            'message' => 'User has been created successfully',
+            'message_type' => 'success',
+            'data' => $user
+        ]);
+    }
+
+}
