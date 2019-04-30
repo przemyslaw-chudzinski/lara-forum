@@ -9,12 +9,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-// Init Vuetify
-const Vuetify = require('vuetify');
+require('./plugins');
 
-Vue.use(Vuetify);
-
-// require('vuetify/dist/vuetify.min.css');
+import router from './router';
 
 /**
  * The following block of code may be used to automatically register your
@@ -39,8 +36,7 @@ Vue.component('home-page-component', require('./pages/HomePageComponent').defaul
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-
-
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router
 });

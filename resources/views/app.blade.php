@@ -20,7 +20,7 @@
 
             <v-container fluid>
 
-                <home-page-component></home-page-component>
+                <router-view></router-view>
 
             </v-container>
 

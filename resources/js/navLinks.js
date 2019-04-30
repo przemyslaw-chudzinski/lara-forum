@@ -9,10 +9,10 @@ export const navLinks = [
         visible: true,
         route: '/ask-question'
     },
-    {
-        label: 'Category',
-        visible: true
-    },
+    // {
+    //     label: 'Category',
+    //     visible: true
+    // },
     {
         label: 'Login',
         visible: true,
